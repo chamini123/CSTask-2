@@ -25,9 +25,8 @@ public class DataProcessor {
 	 */
 	public ArrayList<Record> getDataByDate(String filePath, String searchDate) {
 		
-		ArrayList<Record> covidCount= new ArrayList<Record>();   //Create a array list to store Record objects.
-	    
-		try {
+		ArrayList<Record> covidCount= new ArrayList<Record>(); 
+	         try {
 			String fileContent =new String (Files.readAllBytes(Paths.get(filePath)));
 			JSONObject obj  = new JSONObject(fileContent);
 			JSONArray arr = obj.getJSONArray(Constants.JSON_ARRAY);
@@ -42,7 +41,7 @@ public class DataProcessor {
 						String country = element.getString(Constants.COUNTRY);
 						String continent = element.getString(Constants.CONTINENT);
 						
-						covidCount.add(new Record(date,deaths,cases,country,continent)); // Create record object with their data and add them into created array list
+						covidCount.add(new Record(date,deaths,cases,country,continent)); 
 						
 					} catch (JSONException | ParseException e) {
 						e.printStackTrace();
@@ -54,6 +53,6 @@ public class DataProcessor {
 			e.printStackTrace();
 		}
 		
-		return covidCount; // for return array list
-	}
+		return covidCount; 
+	   }
 }
